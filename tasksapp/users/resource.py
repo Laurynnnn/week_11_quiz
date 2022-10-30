@@ -1,7 +1,7 @@
-from usersapp.models import User
+from tasksapp.models import User
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource, reqparse
-from usersapp.schemas.app_schemas import UserSchema
+from tasksapp.schemas.app_schemas import UserSchema
 from datetime import datetime
 
 
