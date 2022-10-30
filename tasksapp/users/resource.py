@@ -30,20 +30,6 @@ class Users(Resource):
         users = User.query.all()
         return users_schema.dump(users), 200
 
-    @jwt_required()
-    def post(self):
-        self.parser.add_argument('name', type=str, required=True, help='Name cannot be blank')
-        self.parser.add_argument('email', type=str, required=True, help='Email cannot be blank')
-        self.parser.add_argument('password', type=str, required=True, help='Password cannot be blank')
-
-        data = self.parser.parse_args()
-
-        user_id = get_jwt_identity()
-
-        new_user = User(**data)
-        new_user.save()
-        return {'message': 'User added successfully'}, 201
-
     
     @jwt_required()
     def put(self, user_id):
